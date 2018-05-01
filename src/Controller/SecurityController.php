@@ -12,17 +12,18 @@ use App\Forms\RecoverUserForm;
 use App\Forms\RegisterUserForm;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-
-class SecurityController extends Controller  {
-
+class SecurityController extends Controller
+{
   public function login(AuthenticationUtils $helper){
     $error = $helper->getLastAuthenticationError();
     $lastUsername = $helper->getLastUsername();
+
     return $this->render('User/Security/login.html.twig', array(
       'last_username' => $lastUsername,
       'error'         => $error,
     ));
   }
+
   public function registerAction( Request $request ){
     $registerModel = new RegisterUserModel();
     $registerForm = $this->createForm(RegisterUserForm::class, $registerModel);
@@ -39,6 +40,7 @@ class SecurityController extends Controller  {
       'register_form' => $registerForm->createView()
     ]);
   }
+
   public  function recoverAction($token, Request $request ){
     if($token){
       /** @var UserAccount $userRecover */

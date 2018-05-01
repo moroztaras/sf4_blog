@@ -1,22 +1,18 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
-
 app_preview:
   path: /preview
   controller: App\Controller\DefaultController::preview
 #PAGE ROUTES
 page_list:
   path: /page
-  defaults: { _controller: PageBundle:Page:list }
+  controller:  App\Controller\PageController::list
 
 page_add:
   path: /page/add
-  defaults: { _controller: PageBundle:Page:add }
+  controller:  App\Controller\PageController::add
 
 page_view:
   path: /page/{id}
-  defaults: { _controller: PageBundle:Page:view }
+  controller:  App\Controller\PageController::view
   requirements:
     id: '\d+'
 
@@ -28,10 +24,10 @@ page_comments:
 
 page_edit:
   path: /page/{id}/edit
-  defaults: { _controller: PageBundle:Page:edit }
+  controller:  App\Controller\PageController::edit
   requirements:
     id: '\d+'
-#
+
 page_delete:
   path: /page/{id}/delete
   defaults: { _controller: PageBundle:Page:remove }
@@ -63,13 +59,11 @@ term_edit:
   requirements:
     id: '\d+'
 
-
 term_delete:
   path: /term/{id}/delete
   defaults : { _controller: TermBundle:Term:delete }
   requirements:
     id: '\d+'
-
 
 #comments ROUTERS
 comment_edit:
@@ -77,16 +71,14 @@ comment_edit:
   defaults: { _controller: CommentBundle:Comment:edit }
   requirements:
     id: '\d+'
-#
+
 comment_delete:
   path: /comment/{id}/delete
   defaults: { _controller: CommentBundle:Comment:remove }
   requirements:
     id: '\d+'
 
-
-#user
-
+#user  ROUTERS
 login:
   path: /login
   controller: App\Controller\SecurityController::login
@@ -101,7 +93,6 @@ register:
 recover:
   path: /recover/{token}
   defaults: { _controller: UserBundle:Security:recover, token: null }
-
 
 user:
   path: /user
