@@ -2,6 +2,9 @@
 
 {% block page_title %}Main Page Title{% endblock %}
 
+{% block body_top %}
+    {{ include('Block/block-flashbag.html.twig') }}
+{% endblock %}
 {% block header %}
     {{ render(controller('App\\Controller\\BlockController::logo')) }}
     {{ render(controller('App\\Controller\\BlockController::mainMenu')) }}
