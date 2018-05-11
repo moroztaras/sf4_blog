@@ -154,3 +154,11 @@
     }
   }
 }
+.field-title{
+  a{
+    color: black;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+}
