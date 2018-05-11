@@ -1,7 +1,7 @@
 .page { max-width: 1200px; margin: 0 auto; display: -webkit-flex; display: flex; -webkit-flex-flow: row wrap; flex-flow: row wrap; min-height: 100%; }
 .page > * { width: 100%; }
 .page footer { margin-top: auto; }
-.page-wrap { padding: 0 10px 30px 10px; background-image: url('../../../images/page-bg-1.jpg'); height: 100%; }
+.page-wrap { padding: 0 10px 30px 10px; background-image: url('../../images/page-bg-1.jpg?1524999152'); height: 100%; }
 
 .main-wrap { max-width: 1200px; margin: 0 auto; display: -webkit-flex; display: flex; -webkit-flex-flow: row wrap; flex-flow: row wrap; }
 .main-wrap .sidebar-left { -webkit-flex: 1 100%; flex: 1 100%; -webkit-order: 2; order: 2; }
@@ -20,9 +20,14 @@
 .block-category-list .menu-item { border-bottom: 1px dashed #a9a9a9; padding: 10px 0; }
 .block-category-list .menu-item:last-child { border-bottom-width: 0; }
 .block-category-list .menu a { position: relative; text-transform: uppercase; margin-left: 30px; font-size: 12px; }
-.block-category-list .menu a:before { position: absolute; content: ""; left: -20px; top: 0; width: 14px; height: 14px; margin-top: 1px; line-height: 14px; vertical-align: text-top; background-image: url('../../../images/glyphicons-halflings.png'); background-position: 0 -95px; }
+.block-category-list .menu a:before { position: absolute; content: ""; left: -20px; top: 0; width: 14px; height: 14px; margin-top: 1px; line-height: 14px; vertical-align: text-top; background-image: url('../../images/glyphicons-halflings.png?1524999152'); background-position: 0 -95px; }
 
 .page-view .fields-top { background-color: #ffffff; padding: 20px; }
 .page-view .fields-top .list-link { margin-top: 20px; display: -webkit-flex; display: flex; -webkit-flex-direction: row; flex-direction: row; -webkit-justify-content: flex-end; justify-content: flex-end; font-size: 12px; }
 .page-view .fields-top .list-link-item { margin-right: 10px; }
 .page-view .fields-top .list-link-item:last-child { margin-right: 0; }
+
+.messages .message { margin-bottom: 15px; border: 1px solid #fbeed5; background-color: #fcf8e3; color: #c09853; -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px; padding: 8px 14px; }
+.messages .message--error { color: #b94a48; background-color: #f2dede; border-color: #eed3d7; }
+.messages .message--success { color: #468847; background-color: #dff0d8; border-color: #d6e9c6; }
+.messages .message--help { color: #3a87ad; background-color: #d9edf7; border-color: #bce8f1; }

@@ -69,7 +69,7 @@ class PageController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($page);
             $em->flush();
-            $flashBag->add('success', 'Стаття добавлена:'. $page->getTitle());
+            $flashBag->add('success', 'Стаття добавлена: '. $page->getTitle());
             return $this->redirectToRoute('page_view', [ 'id' => $page->getId() ]);
         }
         return $this->render('Page/add.html.twig', [
@@ -95,7 +95,7 @@ class PageController extends Controller
         if($form->isSubmitted()){
             $em->persist($page);
             $em->flush();
-            $flashBag->add('success', 'Стаття відредагована:'. $page->getTitle());
+            $flashBag->add('success', 'Стаття відредагована: '. $page->getTitle());
             return $this->redirectToRoute('page_view', [ 'id' => $page->getId() ]);
         }
         return $this->render('Page/edit.html.twig', [
@@ -116,7 +116,7 @@ class PageController extends Controller
         if($form->isSubmitted()){
             $em->remove($page);
             $em->flush();
-            $session->getFlashBag('success', 'Стаття видалена:'. $page->getTitle());
+            $session->getFlashBag('success', 'Стаття видалена: '. $page->getTitle());
             return $this->redirectToRoute('page_list');
         }
         return $this->render('Page/delete.html.twig', [
