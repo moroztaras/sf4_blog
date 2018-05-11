@@ -1,6 +1,7 @@
 app_preview:
   path: /preview
   controller: App\Controller\DefaultController::preview
+
 #PAGE ROUTES
 page_list:
   path: /page
@@ -18,7 +19,7 @@ page_view:
 
 page_comments:
   path: /page/{id}/comments
-  defaults: { _controller: PageBundle:Page:comments }
+  controller:  App\Controller\PageController::comments
   requirements:
     id: '\d+'
 
@@ -30,51 +31,51 @@ page_edit:
 
 page_delete:
   path: /page/{id}/delete
-  defaults: { _controller: PageBundle:Page:remove }
+  controller:  App\Controller\PageController::remove
   requirements:
     id: '\d+'
 
 page_search:
   path: /search
-  defaults: { _controller: PageBundle:Page:search }
+  controller:  App\Controller\PageController::search
 
 #TERM ROUTES
 term_list:
   path: /term
-  defaults : { _controller: TermBundle:Term:list }
+  controller:  App\Controller\TermController::list
 
 term_add:
   path: /term/add
-  defaults : { _controller: TermBundle:Term:add }
+  controller:  App\Controller\TermController::add
 
 term_view:
   path: /term/{id}
-  defaults : { _controller: TermBundle:Term:view }
+  controller:  App\Controller\TermController::view
   requirements:
     id: '\d+'
 
 term_edit:
   path: /term/{id}/edit
-  defaults : { _controller: TermBundle:Term:edit }
+  controller:  App\Controller\TermController::edit
   requirements:
     id: '\d+'
 
 term_delete:
   path: /term/{id}/delete
-  defaults : { _controller: TermBundle:Term:delete }
+  controller:  App\Controller\TermController::delete
   requirements:
     id: '\d+'
 
 #comments ROUTERS
 comment_edit:
   path: /comment/{id}/edit
-  defaults: { _controller: CommentBundle:Comment:edit }
+  controller:  App\Controller\CommentController::edit
   requirements:
     id: '\d+'
 
 comment_delete:
   path: /comment/{id}/delete
-  defaults: { _controller: CommentBundle:Comment:remove }
+  controller:  App\Controller\CommentController::remove
   requirements:
     id: '\d+'
 
@@ -88,15 +89,17 @@ logout:
 
 register:
   path: /register
-  defaults: { _controller: UserBundle:Security:register }
+  controller: App\Controller\UserController::register
 
 recover:
   path: /recover/{token}
-  defaults: { _controller: UserBundle:Security:recover, token: null }
+  controller: App\Controller\UserController::recover
+  defaults:
+          token: null
 
 user:
   path: /user
 
 user_password_recover:
   path: /user/recover-password
-  defaults: { _controller: UserBundle:User:recoverPassword }
+  controller: App\Controller\UserController::recoverPassword
