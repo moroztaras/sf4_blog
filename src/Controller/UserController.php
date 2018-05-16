@@ -1,23 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: pavel
- * Date: 11/10/2017
- * Time: 8:53 AM
- */
 
 namespace App\Controller;
 
-
 use App\Components\Users\Models\ChangePasswordModel;
+use App\Forms\ChangePasswordForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-
 class UserController extends Controller {
 
-
-  public function recoverPasswordAction( Request $request ){
+  public function recoverPassword( Request $request ){
     /** @var User $user */
     $user = $this->getUser();
     $userAccount = $user->getAccount();

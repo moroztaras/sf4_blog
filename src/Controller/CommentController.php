@@ -2,14 +2,14 @@
 
 namespace App\Controller;
 
-use CommentBundle\Forms\CommentDeleteForm;
-use CommentBundle\Forms\CommentForm;
+use App\Forms\CommentDeleteForm;
+use App\Forms\CommentForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 class CommentController extends Controller {
 
-  public function editAction($id, Request $request){
+  public function edit($id, Request $request){
     $em = $this->getDoctrine()->getManager();
     $repo = $em->getRepository('CommentBundle:Comment');
     $comment = $repo->find($id);
@@ -28,7 +28,7 @@ class CommentController extends Controller {
     ]);
   }
 
-  public function removeAction($id, Request $request){
+  public function remove($id, Request $request){
     $em = $this->getDoctrine()->getManager();
     $repo = $em->getRepository('CommentBundle:Comment');
     $comment = $repo->find($id);
@@ -49,7 +49,7 @@ class CommentController extends Controller {
         'page' => $page->getId()
       ]);
     }
-    return $this->render('CommentBundle::delete.html.twig', [
+    return $this->render('@Comment/delete.html.twig', [
       'form' => $form->createView()
     ]);
   }

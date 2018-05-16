@@ -9,18 +9,18 @@
   <link rel="stylesheet" href="{{ asset('css/components/footer.css') }}">
 {% endblock %}
 {% block body %}
-  {% block body_top %}{% endblock %}
+    {% block body_top %}{% endblock %}
   <div class="page-wrap">
     <div class="page">
       <header class="header" id="header">
         <div class="region region-header">
-          {% block header %}{% endblock %}
+            {% block header %}{% endblock %}
         </div>
       </header>
       <div class="main-wrap">
         <aside class="sidebar sidebar-left">
           <div class="region region-sidebar-left">
-            {% block sidebar_left %}{% endblock %}
+              {% block sidebar_left %}{% endblock %}
           </div>
         </aside>
         <main class="main" id="main">
@@ -29,19 +29,19 @@
             <div class="block block-title-page">
               <h1 id="page_title">{% block page_title %}{% endblock %}</h1>
             </div>
-            {% block main %}{% endblock %}
+              {% block main %}{% endblock %}
           </div>
         </main>
       </div>
       <footer class="footer">
         <div class="footer-top">
           <div class="region region-footer-top">
-            {% block footer_top %}{% endblock %}
+              {% block footer_top %}{% endblock %}
           </div>
         </div>
         <div class="footer-bottom">
           <div class="region region-footer-bottom">
-            {% block footer_bottom %}{% endblock %}</div>
+              {% block footer_bottom %}{% endblock %}</div>
         </div>
       </footer>
     </div>

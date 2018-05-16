@@ -24,7 +24,7 @@ class SecurityController extends Controller
     ));
   }
 
-  public function registerAction( Request $request ){
+  public function register( Request $request ){
     $registerModel = new RegisterUserModel();
     $registerForm = $this->createForm(RegisterUserForm::class, $registerModel);
     $registerForm->handleRequest($request);
@@ -41,7 +41,7 @@ class SecurityController extends Controller
     ]);
   }
 
-  public  function recoverAction($token, Request $request ){
+  public  function recover($token, Request $request ){
     if($token){
       /** @var UserAccount $userRecover */
       $userAccountRecover = $this->getDoctrine()->getRepository('UserBundle:UserAccount')->findOneByTokenRecover($token);

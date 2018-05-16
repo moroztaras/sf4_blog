@@ -156,7 +156,7 @@ class PageController extends Controller
             $data = $searchForm->getData();
             $pages = $pageRepo->findByWord($data['search']);
         }
-        return $this->render('PageBundle:Page:search.html.twig',[
+        return $this->render('Page/search.html.twig',[
             'pages' => $pages,
             'form' => $searchForm->createView()
         ]);

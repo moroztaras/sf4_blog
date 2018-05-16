@@ -2,7 +2,7 @@ app_preview:
   path: /preview
   controller: App\Controller\DefaultController::preview
 
-#PAGE ROUTES
+#page routers
 page_list:
   path: /page
   controller:  App\Controller\PageController::list
@@ -39,7 +39,7 @@ page_search:
   path: /search
   controller:  App\Controller\PageController::search
 
-#TERM ROUTES
+#term  routers
 term_list:
   path: /term
   controller:  App\Controller\TermController::list
@@ -66,7 +66,7 @@ term_delete:
   requirements:
     id: '\d+'
 
-#comments ROUTERS
+#comments routers
 comment_edit:
   path: /comment/{id}/edit
   controller:  App\Controller\CommentController::edit
@@ -79,7 +79,7 @@ comment_delete:
   requirements:
     id: '\d+'
 
-#user  ROUTERS
+#user routers
 login:
   path: /login
   controller: App\Controller\SecurityController::login
