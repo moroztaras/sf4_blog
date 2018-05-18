@@ -11,46 +11,60 @@ use App\Entity\UserAccount;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 
-class UserFixtures extends Fixture implements DependentFixtureInterface {
+class UserFixtures extends Fixture implements DependentFixtureInterface
+{
+    private $container;
 
-  private $container;
+    public function __construct( ContainerInterface $container)
+    {
+        $this->container = $container;
+    }
 
-  public function __construct( ContainerInterface $container)
-  {
-    $this->container = $container;
-  }
+    public function load(ObjectManager $manager) {
+        $roleRepo = $manager->getRepository(Role::class);
+        $role = $roleRepo->findOneByRole('ROLE_USER');
+        $roleAdmin = $roleRepo->findOneByRole('ROLE_ADMIN');
+        if(!$role)
+            return;
+        $encoder = $this->container->get('security.password_encoder');
 
-  public function load(ObjectManager $manager) {
+        $user = new User();
+        $password = $encoder->encodePassword($user, 'moroztaras');
+        $user->setPassword($password);
+        $user->addRole($role);
+        $user->addRole($roleAdmin);
+        $user->setEmail('moroztaras@i.ua');
 
-    $roleRepo = $manager->getRepository(Role::class);
-    $role = $roleRepo->findOneByRole('ROLE_USER');
-    if(!$role)
-      return;
+        $userAccount = new UserAccount();
+        $userAccount->setFirstName('Taras')->setLastName('Moroz');
+        $userAccount->setBirthday( new \DateTime() );
+        $manager->persist($user);
+        $manager->flush();
+        $userAccount->setUser($user);
 
-    $encoder = $this->container->get('security.password_encoder');
-    $user = new User();
-    $password = $encoder->encodePassword($user, '123456');
-    $user->setPassword($password);
-    $user->addRole($role);
-    $user->setEmail('info@utilvideo.com');
+        $manager->persist($userAccount);
 
-    $userAccount = new UserAccount();
-    $userAccount->setFirstName('John')->setLastName('Doe');
-    $userAccount->setBirthday( new \DateTime() );
-    $manager->persist($user);
-    $manager->flush();
-    $userAccount->setUser($user);
-    $manager->persist($userAccount);
-    $manager->flush();
+        $user = new User();
+        $password = $encoder->encodePassword($user, 'user');
+        $user->setPassword($password);
+        $user->addRole($role);
+        $user->setEmail('user@mail.ua');
 
+        $userAccount = new UserAccount();
+        $userAccount->setFirstName('FirstName1')->setLastName('LastName1');
+        $userAccount->setBirthday( new \DateTime() );
+        $manager->persist($user);
+        $manager->flush();
+        $userAccount->setUser($user);
 
-  }
+        $manager->persist($userAccount);
+        $manager->flush();
+    }
 
-  public function getDependencies()
-  {
-    return [
-      RoleFixtures::class
-    ];
-  }
-
+    public function getDependencies()
+    {
+        return [
+            RoleFixtures::class
+        ];
+    }
 }
