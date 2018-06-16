@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Page
- * @package PageBundle\Entity
+ * @package App\Entity
  * @ORM\Entity
  * @ORM\Table(name="term")
  */

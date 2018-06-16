@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class User
- * @package UserBundle\Entity
+ * @package App\Entity
  * @ORM\Entity
  * @ORM\Table(name="role")
  */

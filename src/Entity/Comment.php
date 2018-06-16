@@ -1,15 +1,14 @@
 <?php
 
-
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use PageBundle\Entity\Page;
+use App\Entity\Page;
 
 /**
  * Class Page
- * @package PageBundle\Entity
+ * @package App\Entity
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
  * @ORM\Table(name="comment")
  */

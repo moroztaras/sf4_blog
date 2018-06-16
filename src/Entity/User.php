@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Entity;
-
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;

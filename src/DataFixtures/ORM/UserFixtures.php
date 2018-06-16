@@ -26,41 +26,37 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $roleAdmin = $roleRepo->findOneByRole('ROLE_ADMIN');
         if(!$role)
             return;
-        $encoder = $this->container->get('security.password_encoder');
 
+        $encoder = $this->container->get('security.password_encoder');
         $user = new User();
-        $password = $encoder->encodePassword($user, 'moroztaras');
+        $password = $encoder->encodePassword($user, '123456');
         $user->setPassword($password);
         $user->addRole($role);
         $user->addRole($roleAdmin);
         $user->setEmail('moroztaras@i.ua');
 
         $userAccount = new UserAccount();
-        $userAccount->setFirstName('Taras')->setLastName('Moroz');
+        $userAccount->setFirstName('Moroz')->setLastName('Taras');
         $userAccount->setBirthday( new \DateTime() );
         $manager->persist($user);
         $manager->flush();
         $userAccount->setUser($user);
-
         $manager->persist($userAccount);
 
         $user = new User();
-        $password = $encoder->encodePassword($user, 'user');
+        $password = $encoder->encodePassword($user, '123456');
         $user->setPassword($password);
         $user->addRole($role);
-        $user->setEmail('user@mail.ua');
-
+        $user->setEmail('user@i.ua');
         $userAccount = new UserAccount();
-        $userAccount->setFirstName('FirstName1')->setLastName('LastName1');
+        $userAccount->setFirstName('FirstName')->setLastName('LastName');
         $userAccount->setBirthday( new \DateTime() );
         $manager->persist($user);
         $manager->flush();
         $userAccount->setUser($user);
-
         $manager->persist($userAccount);
         $manager->flush();
     }
-
     public function getDependencies()
     {
         return [

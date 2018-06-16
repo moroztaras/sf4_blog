@@ -4,8 +4,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 /**
- * Class User
- * @package UserBundle\Entity
+ * Class UserAccount
+ * @package App\Entity
  * @ORM\Entity
  * @ORM\Table(name="user_account")
  */

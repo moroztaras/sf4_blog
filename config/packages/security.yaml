@@ -1,14 +1,15 @@
 security:
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     access_decision_manager:
         strategy: unanimous
         allow_if_all_abstain: false
+
     encoders:
         App\Entity\User: bcrypt
-    # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
+
     providers:
         db_user:
             id: App\Components\Users\Provider\UserProvider
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -31,8 +32,6 @@ security:
             # form_login: true
             # https://symfony.com/doc/current/security/form_login_setup.html
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
 #    access_control:
 #         - { path: ^/admin, roles: ROLE_ADMIN }
 #         - { path: ^/profile, roles: ROLE_USER }
