@@ -10,6 +10,8 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use App\Entity\UserAccount;
 use App\Forms\RecoverUserForm;
 use App\Forms\RegisterUserForm;
+use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends Controller
@@ -24,13 +26,12 @@ class SecurityController extends Controller
     ));
   }
 
-  public function register( Request $request ){
+  public function register( Request $request, UserPasswordEncoderInterface $passwordEncoder ){
     $registerModel = new RegisterUserModel();
     $registerForm = $this->createForm(RegisterUserForm::class, $registerModel);
     $registerForm->handleRequest($request);
     if($registerForm->isSubmitted()){
-
-      $user = $registerModel->getUserHandler();
+      $user = $registerModel->getUserHandler($passwordEncoder);
       $em = $this->getDoctrine()->getManager();
       $em->persist($user);
       $em->flush();

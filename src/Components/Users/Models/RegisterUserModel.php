@@ -3,6 +3,8 @@
 namespace App\Components\Users\Models;
 
 use CoreBundle\Core\Core;
+use Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Entity\User;
 use App\Entity\UserAccount;
@@ -105,7 +107,7 @@ class RegisterUserModel {
     $this->region = $region;
   }
 
-  public function getUserHandler(){
+  public function getUserHandler(UserPasswordEncoderInterface $passwordEncoder){
     $user = new User();
     $account = new UserAccount();
     $account->setFirstName($this->firstName);
@@ -114,8 +116,8 @@ class RegisterUserModel {
     $account->setRegion($this->region);
     $user->setEmail($this->email);
     $user->setAccount($account);
-    $encoder = Core::service('security.password_encoder');
-    $password = $encoder->encodePassword($user, $this->password);
+
+    $password = $passwordEncoder->encodePassword($user, $this->password);
     $user->setPassword($password);
     return $user;
   }
